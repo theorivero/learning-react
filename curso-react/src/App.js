@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {v4 as uuidv4} from 'uuid';
 
 import Tasks from "./components/Tasks";
 import './App.css'
@@ -22,19 +23,32 @@ const App = () => {
   const HandleSetAddition = (taskTitle) => {
     const newTasks = [ ... tasks, {
       title: taskTitle,
-      id: Math.random(10),
+      id: uuidv4(),
       complete: false
     }];
-
     setTasks(newTasks);
     console.log(tasks)
+  }
+
+
+  const HandleUpdateDoneArrayItem = (taskId) => {
+    const newTasks = tasks.map(task => {
+      if (task.id === taskId) return { ... task, complete: !task.complete} 
+      return task
+    });
+    setTasks(newTasks);
+  }
+
+  const HandleDeleteItem = (taskId) => {
+    const newTasks = tasks.filter(task => task.id !== taskId);
+    setTasks(newTasks);
   }
 
   return (
   <div>
     <div className="container">
       <AddTask HandleSetAddition={HandleSetAddition}/>
-      <Tasks tasks={tasks}/>
+      <Tasks tasks={tasks} HandleUpdateDoneArrayItem={HandleUpdateDoneArrayItem} HandleDeleteItem={HandleDeleteItem}/>
     </div>
   </div>  
   );
