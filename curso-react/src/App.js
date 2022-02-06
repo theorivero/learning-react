@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import {v4 as uuidv4} from 'uuid';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Tasks from "./components/Tasks";
-import './App.css'
 import AddTask from "./components/AddTask";
+import Header from "./components/Header";
+
+import './App.css'
 
 const App = () => {
   // let message = "Hello world";
@@ -45,12 +48,20 @@ const App = () => {
   }
 
   return (
-  <div>
-    <div className="container">
-      <AddTask HandleSetAddition={HandleSetAddition}/>
-      <Tasks tasks={tasks} HandleUpdateDoneArrayItem={HandleUpdateDoneArrayItem} HandleDeleteItem={HandleDeleteItem}/>
-    </div>
-  </div>  
+    <Router>
+      <div>
+        <div className="container">
+          <Header>Minhas Tarefas</Header>
+          <Route path='/' exact render={() => (
+            <>
+              <AddTask HandleSetAddition={HandleSetAddition}/>
+              <Tasks tasks={tasks} HandleUpdateDoneArrayItem={HandleUpdateDoneArrayItem} HandleDeleteItem={HandleDeleteItem}/>
+            </>
+          )}
+        />
+        </div>
+      </div>  
+    </Router>
   );
 };
 

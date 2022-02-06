@@ -13,9 +13,13 @@
     cursor:pointer;
 }
 
-.x-button {
+.buttons-container {
+    display: flex;
+}
+
+.x-button, .see-task-details-button {
     background-color: #444;
     color: chartreuse;
-    font-size: 16px;
+    font-size: 24px;
     border: none;
 }
