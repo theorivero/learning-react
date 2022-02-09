@@ -75,3 +75,34 @@ const App = () => {
 };
 
 export default App;
+
+
+// class App extends React.Component {
+//   constructor() {
+//     super();
+
+//     this.state = {
+//       message: "Hello World",
+//     }
+//   }
+
+//   componentDidMount() {
+//     console.log('Componente renderizado')
+//   }
+
+
+//   handleMessageChangeClick() {
+//     this.setState({message: 'Heloooo'})
+//   }
+
+//   render() {
+//     return (
+//       <>
+//         <h1>{this.state.message}</h1>
+//         <button onClick={this.handleMessageChangeClick.bind(this)}>Mudar mensagem</button>
+//       </>
+//     )
+//   }
+// }
+
+// export default App;

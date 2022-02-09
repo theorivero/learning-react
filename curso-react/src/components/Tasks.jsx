@@ -4,7 +4,14 @@ import Task from "./Task";
 const Tasks = ({ tasks, HandleUpdateDoneArrayItem, HandleDeleteItem }) => {
     return (
         <>
-            {tasks.map( task => <Task task={task} HandleUpdateDoneArrayItem={HandleUpdateDoneArrayItem} HandleDeleteItem={HandleDeleteItem}/>)}
+            {tasks.map( task => 
+            <Task 
+                key={task.id}
+                task={task} 
+                HandleUpdateDoneArrayItem={HandleUpdateDoneArrayItem} 
+                HandleDeleteItem={HandleDeleteItem}
+            />
+        )}
         </>
     )
 }
